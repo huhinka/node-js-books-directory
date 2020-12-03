@@ -1,0 +1,30 @@
+{
+  "name": "node-js-books-directory",
+  "version": "1.0.0",
+  "description": "使用 JS 编写 Node 平台项目的练习",
+  "private": "false",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huhinka/node-js-books-directory.git"
+  },
+  "keywords": [
+    "Express"
+  ],
+  "author": "huhinka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huhinka/node-js-books-directory/issues"
+  },
+  "homepage": "https://github.com/huhinka/node-js-books-directory#readme",
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
