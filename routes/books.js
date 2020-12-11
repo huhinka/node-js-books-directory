@@ -5,8 +5,17 @@ const router = express.Router()
 const BOOKS_FILE = 'books.json'
 
 async function getBooks () {
-  const json = await fs.readFile(BOOKS_FILE, 'utf-8')
-  return JSON.parse(json)
+  try {
+    const json = await fs.readFile(BOOKS_FILE, 'utf-8')
+    return JSON.parse(json)
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      await fs.writeFile(BOOKS_FILE, '[]')
+      return []
+    }
+
+    throw err
+  }
 }
 
 async function setBooks (json) {
