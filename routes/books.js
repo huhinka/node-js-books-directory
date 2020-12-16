@@ -1,10 +1,15 @@
 const fs = require('fs/promises')
 const express = require('express')
 const router = express.Router()
+const Lock = require('../lock')
+
+const booksLock = new Lock()
 
 const BOOKS_FILE = 'books.json'
 
 async function getBooks () {
+  const unlock = await booksLock.lock()
+
   try {
     const json = await fs.readFile(BOOKS_FILE, 'utf-8')
     return JSON.parse(json)
@@ -15,11 +20,19 @@ async function getBooks () {
     }
 
     throw err
+  } finally {
+    await unlock()
   }
 }
 
 async function setBooks (json) {
-  await fs.writeFile(BOOKS_FILE, JSON.stringify(json))
+  const unlock = await booksLock.lock()
+
+  try {
+    await fs.writeFile(BOOKS_FILE, JSON.stringify(json))
+  } finally {
+    await unlock()
+  }
 }
 
 /**
