@@ -67,7 +67,7 @@ router.post('/', async (req, res) => {
   const book = req.body
   const existing = await getBooks()
   const maxId = Math.max.apply(null, existing.map((book) => book.id))
-  book.id = maxId + 1
+  book.id = (maxId === -Infinity) ? 1 : maxId + 1
   existing.push(book)
   await setBooks(existing)
 
