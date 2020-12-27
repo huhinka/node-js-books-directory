@@ -2,7 +2,7 @@
   "name": "node-js-books-directory",
   "version": "1.0.0",
   "description": "使用 JS 编写 Node 平台项目的练习",
-  "private": "false",
+  "private": "true",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
